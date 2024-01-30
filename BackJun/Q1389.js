@@ -68,14 +68,14 @@ class Queue {
 
 const input = require('fs').readFileSync('./dev/stdin', 'utf-8').split('\n').map(e => e.trim());
 
-const [N, M] = input[0].split(" ").map(e=>parseInt(e));
+const [N, M] = input[0].split(" ").map(e => parseInt(e));
 
-let KevinBaconList = Array.from({length:N + 1}, ()=>new Array(N + 1).fill(0));
+let KevinBaconList = Array.from({ length: N + 1 }, () => new Array(N + 1).fill(0));
 
-let nearList = Array.from({length:N+1}, ()=>new Set());
+let nearList = Array.from({ length: N + 1 }, () => new Set());
 
 for (let i = 1; i <= M; i++) {
-    let [A, B] = input[i].split(' ').map(e=>parseInt(e));
+    let [A, B] = input[i].split(' ').map(e => parseInt(e));
 
     KevinBaconList[A][B] = 1;
     KevinBaconList[B][A] = 1;
@@ -95,12 +95,12 @@ for (let i = 1; i <= N; i++) {
 
         let nextPersonList = new Set(nearList[personNum]);
 
-        for (let nearPerson of nearList[personNum]){
-            if (isVisitList[nearPerson] == true){
+        for (let nearPerson of nearList[personNum]) {
+            if (isVisitList[nearPerson] == true) {
                 nextPersonList.delete(nearPerson);
-            }else{
+            } else {
                 isVisitList[nearPerson] = true;
-            }            
+            }
         }
 
         for (let nearPerson of nextPersonList) {
